@@ -1,0 +1,37 @@
+<html lang = "en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+
+        <div class = "blogs-content">
+            <div class = "blogs-content-main">
+                <h2 class="blogs-content-main-title-0"><%= blog.title %></h2>
+                <p class="blogs-content-main-title">By <%= blog.name %></p>
+                <p class="blogs-content-main-body"><%= blog.body %></p>
+            </div>
+        
+            <% if(user){ %>
+                <% if(user.id == blog.id){ %>
+           <a class="delete" data-doc="<%= blog._id %>"><button class="button">Delete</button></a>
+                <%} %>
+           <% }%>
+        </div>
+
+
+        <%- include('./partials/footer.ejs') %>
+            
+        </div>
+
+        <script>
+            const del = document.querySelector('a.delete');
+            del.addEventListener('click' , (e)=>{
+                const finl = `/blogs/${del.dataset.doc}`;
+                fetch(finl , {
+                    method : 'DELETE'
+                }).then((response)=>
+                    response.json()).then((data)=>window.location.href = data.redirect )
+                .catch(err => console.log(err));
+            })
+        </script>
+    </body>
+</html>

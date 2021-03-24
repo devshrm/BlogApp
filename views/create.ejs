@@ -1,0 +1,27 @@
+<html lang = "en">
+    <%- include('./partials/head.ejs')%>
+    <body>
+        <div class="page-container">
+        <%- include('./partials/nav.ejs') %>
+
+        <div class = "create-content">
+            <form action = "/blogs" method = "POST">
+                <div class="create-content-title">
+                <input type = "text" id = "title" name = "title" placeholder="Title" required>
+                </div>
+                <div class="create-content-body">
+                <textarea id = "body" name = "body" placeholder="Body" required></textarea>
+                </div>
+                <div><button>Submit</button></div>
+            </form>
+        </div>
+        <div class="footer-1">
+            <footer class="footer">
+                <p>Copyright &copy; BlogStar 2021</p>
+            </footer>
+            </div>
+            
+        </div>
+        </div>
+    </body>
+</html>

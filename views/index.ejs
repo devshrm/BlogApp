@@ -1,0 +1,31 @@
+<html lang = "en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- messages('message', locals) %>
+        <div class="page-container">
+        <%- include('./partials/nav.ejs') %>
+
+        <div class = "blogs">
+            <h2>Blogs</h2> 
+            
+            <% if(blogs.length > 0){ %>
+                <% blogs.forEach(blog => { %>
+                    
+                    <a class = "single" href="/blogs/<%= blog._id %>"> 
+                        <div class="hell">
+                    <h3 class = "title"><%= blog.title %></h3>
+                    <p class = "name">By <%= blog.name %></p>
+                        </div>     
+                </a>
+                    <% }) %>
+                <% }else{ %>
+                    <p>No blogs... </p>
+                    <% } %>
+            
+        </div>
+        
+       
+        <%- include('./partials/footer.ejs') %>
+        </div>
+    </body>
+</html>
